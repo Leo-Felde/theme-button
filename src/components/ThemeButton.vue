@@ -47,7 +47,7 @@
       id="stars"
     >
       <div
-        v-for="i in 8"
+        v-for="i in 11"
         :id="`star-${i}`"
         :key="i"
       />
@@ -73,25 +73,31 @@ export default {
       const gradientElement = document.getElementById('moving-gradient')
       const moonElement = document.getElementById('moon')
       const cloudsElement = document.getElementById('clouds')
+      const starsElement = document.getElementById('stars')
 
       if (themeDark.value) {
         movingIconElement.classList.add('animate') 
         gradientElement.classList.add('animate')
         moonElement.classList.add('animate')
         cloudsElement.classList.add('animate')
+        starsElement.classList.add('animate')
         movingIconElement.classList.remove('animate-reverse')
         gradientElement.classList.remove('animate-reverse')
         moonElement.classList.remove('animate-reverse')
         cloudsElement.classList.remove('animate-reverse')
+        starsElement.classList.remove('animate-reverse')
       } else {
         movingIconElement.classList.add('animate-reverse') 
         gradientElement.classList.add('animate-reverse')
         moonElement.classList.add('animate-reverse')
         cloudsElement.classList.add('animate-reverse')
+        starsElement.classList.add('animate-reverse')
+
         movingIconElement.classList.remove('animate')
         gradientElement.classList.remove('animate')
         moonElement.classList.remove('animate')
         cloudsElement.classList.remove('animate')
+        starsElement.classList.remove('animate')
       }
     }
 
@@ -353,5 +359,102 @@ export default {
     opacity: 0%
     left: 5px
     top: 0px
-  
+
+#stars
+  position: absolute
+  width: 100%
+  top: 40px
+  &.animate
+    animation: slide-y-invisible 1.3s 1 forwards
+  &.animate-reverse
+    animation: slide-y-invisible-reverse 1.3s 1 forwards
+#star
+  position: absolute
+  margin: 1em auto
+  width: 1em
+  font-size: 12em
+  &:before
+    content: ""
+    position: absolute
+    background: white
+    width: 1em
+    height: 1.15em
+    transform: rotate(-45deg) skewX(22.5deg) skewY(22.5deg)
+  &:after
+    content: ""
+    position: absolute
+    background: white
+    width: 1em
+    height: 1.15em
+    transform: rotate(45deg) skewX(22.5deg) skewY(22.5deg)
+  &-1
+    @extend #star
+    font-size: 2px
+    right: 30px
+    top: 5px
+  &-2
+    @extend #star
+    font-size: 1px
+    right: 32px
+    top: 13px
+  &-3
+    @extend #star
+    font-size: 1.5px
+    right: 38px
+    top: 18px
+  &-4
+    @extend #star
+    font-size: 1px
+    right: 40px
+    top: 5px
+  &-5
+    @extend #star
+    font-size: 0.8px
+    right: 45px
+    top: 11px
+  &-6
+    @extend #star
+    font-size: 0.8px
+    left: 20px
+    top: 14px
+  &-7
+    @extend #star
+    font-size: 2px
+    left: 20px
+    top: 2px
+  &-8
+    @extend #star
+    font-size: 0.8px
+    left: 21px
+    top: 25px
+  &-9
+    @extend #star
+    font-size: 0.6px
+    left: 10px
+    top: 20px
+  &-10
+    @extend #star
+    font-size: 0.6px
+    left: 8px
+    top: 23px
+  &-11
+    @extend #star
+    font-size: 1px
+    left: 9px
+    top: 8px
+
+@keyframes slide-y-invisible
+  0%
+    top: -40px
+    opacity: 0%
+  100%
+    top: 0px
+    opacity: 100%
+@keyframes slide-y-invisible-reverse
+  0%
+    top: 0px
+    opacity: 100%
+  100%
+    top: -40px
+    opacity: 0%
 </style>
